@@ -4,15 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
+@Table(name = "itemsale")
 @Getter
 @Setter
 public class ItemSale {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @ManyToOne
@@ -25,4 +24,5 @@ public class ItemSale {
     @ManyToOne
     @JoinColumn(name = "sale_id")
     private Sale sale;
+
 }

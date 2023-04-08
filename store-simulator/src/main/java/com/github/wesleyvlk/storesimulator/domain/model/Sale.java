@@ -8,21 +8,22 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Table(name = "sale")
 @Getter
 @Setter
 public class Sale {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
-    private LocalDateTime dateTime;
-
-    @OneToMany(mappedBy = "sale")
+    @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL)
     private List<ItemSale> itemSales;
+
+    private LocalDateTime dateTime = LocalDateTime.now();
 
 }
