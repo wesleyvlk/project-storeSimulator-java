@@ -3,10 +3,8 @@ package com.github.wesleyvlk.storesimulator.domain.model.service;
 import com.github.wesleyvlk.storesimulator.domain.model.Product;
 
 public interface ProductService {
+    Product createProduct(Product product);
 
-    Iterable<Product> getAllProducts();
+    Iterable<Product> findAllProducts();
 
-    Product getProduct(Integer id);
-
-    Product save(Product product);
 }
